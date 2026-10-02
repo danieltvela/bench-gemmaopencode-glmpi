@@ -1,0 +1,14 @@
+# Per-run workspaces and logs
+runs/
+# Swift build artifacts (in case a workspace is ever created in-tree)
+.build/
+.swiftpm/
+shelf.sqlite*
+__pycache__/
+*.pyc
+*.xcodeproj
+*.xcworkspace
+# Secrets and local state
+.env
+*.local.json
+.DS_Store

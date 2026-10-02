@@ -1,0 +1,38 @@
+{
+  "run_id": "ref-calibration",
+  "arm": "reference",
+  "date": "2026-10-02T13:58:29Z",
+  "status": "pass",
+  "swift_image": "swift:6.1-jammy",
+  "python_image": "python:3.12-slim",
+  "suite_sha256": "02d225c018ac271a09914b42811d6ff602ff58793415e7637478a6b2e1e36fb6",
+  "executable": "App",
+  "build_ok": true,
+  "phase_a": {
+    "phase": "A",
+    "base_url": "http://127.0.0.1:18080",
+    "total": 45,
+    "passed": 45,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "duration_s": 11.307,
+    "cases": []
+  },
+  "phase_b": {
+    "phase": "B",
+    "base_url": "http://127.0.0.1:18081",
+    "total": 5,
+    "passed": 5,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "duration_s": 0.682,
+    "cases": []
+  },
+  "total": 50,
+  "passed": 50,
+  "failed": 0,
+  "errors": 0,
+  "pass_rate": 1.0000
+}

@@ -1,0 +1,100 @@
+{
+  "run_id": "run1",
+  "arm": "gemma",
+  "date": "2026-10-02T17:01:08Z",
+  "status": "fail",
+  "swift_image": "swift:6.1-jammy",
+  "python_image": "python:3.12-slim",
+  "suite_sha256": "02d225c018ac271a09914b42811d6ff602ff58793415e7637478a6b2e1e36fb6",
+  "executable": "App",
+  "build_ok": true,
+  "phase_a": {
+    "phase": "A",
+    "base_url": "http://127.0.0.1:18080",
+    "total": 45,
+    "passed": 36,
+    "failed": 8,
+    "errors": 1,
+    "skipped": 0,
+    "duration_s": 11.341,
+    "cases": [
+      {
+        "id": "test_auth.TestAuth.test_login_rejects_bad_credentials",
+        "outcome": "failed",
+        "message": "Traceback (most recent call last):\n  File \"/tests/test_auth.py\", line 87, in test_login_rejects_bad_credentials\n    expect_error(\n  File \"/tests/shelf.py\", line 115, in expect_error\n    assert got == code, (\n           ^^^^^^^^^^^\nAssertionError: wrong password: expected code 'unauthorized', got 'internal_error': {\"code\":\"internal_error\",\"error\":\"Unauthorized\"}\n"
+      },
+      {
+        "id": "test_auth.TestAuth.test_register_rejects_invalid_payload (label='missing name')",
+        "outcome": "failed",
+        "message": "Traceback (most recent call last):\n  File \"/tests/test_auth.py\", line 73, in test_register_rejects_invalid_payload\n    expect_error(\n  File \"/tests/shelf.py\", line 107, in expect_error\n    expect_status(res, status, context)\n  File \"/tests/shelf.py\", line 85, in expect_status\n    assert res.status == status, (\n           ^^^^^^^^^^^^^^^^^^^^\nAssertionError: missing name: expected HTTP 400, got 500: {\"error\":\"The operation could not be completed. The data is missing.\",\"code\":\"internal_error\"}\n"
+      },
+      {
+        "id": "test_auth.TestAuth.test_register_rejects_invalid_payload (label='missing email')",
+        "outcome": "failed",
+        "message": "Traceback (most recent call last):\n  File \"/tests/test_auth.py\", line 73, in test_register_rejects_invalid_payload\n    expect_error(\n  File \"/tests/shelf.py\", line 107, in expect_error\n    expect_status(res, status, context)\n  File \"/tests/shelf.py\", line 85, in expect_status\n    assert res.status == status, (\n           ^^^^^^^^^^^^^^^^^^^^\nAssertionError: missing email: expected HTTP 400, got 500: {\"error\":\"The operation could not be completed. The data is missing.\",\"code\":\"internal_error\"}\n"
+      },
+      {
+        "id": "test_jwt.TestJWT.test_rejects_expired_token",
+        "outcome": "failed",
+        "message": "Traceback (most recent call last):\n  File \"/tests/test_jwt.py\", line 67, in test_rejects_expired_token\n    expect_error(client.get(\"/me\", token=forged), 401, \"unauthorized\", \"expired token\")\n  File \"/tests/shelf.py\", line 107, in expect_error\n    expect_status(res, status, context)\n  File \"/tests/shelf.py\", line 85, in expect_status\n    assert res.status == status, (\n           ^^^^^^^^^^^^^^^^^^^^\nAssertionError: expired token: expected HTTP 401, got 500: {\"code\":\"internal_error\",\"error\":\"JWTKit error: exp claim verification failed: expired\"}\n"
+      },
+      {
+        "id": "test_jwt.TestJWT.test_rejects_missing_or_malformed_token",
+        "outcome": "failed",
+        "message": "Traceback (most recent call last):\n  File \"/tests/test_jwt.py\", line 72, in test_rejects_missing_or_malformed_token\n    expect_error(client.get(\"/me\", token=\"garbage\"), 401, \"unauthorized\", \"garbage token\")\n  File \"/tests/shelf.py\", line 107, in expect_error\n    expect_status(res, status, context)\n  File \"/tests/shelf.py\", line 85, in expect_status\n    assert res.status == status, (\n           ^^^^^^^^^^^^^^^^^^^^\nAssertionError: garbage token: expected HTTP 401, got 500: {\"code\":\"internal_error\",\"error\":\"JWTKit error: malformed JWT\"}\n"
+      },
+      {
+        "id": "test_jwt.TestJWT.test_rejects_token_signed_with_wrong_secret",
+        "outcome": "failed",
+        "message": "Traceback (most recent call last):\n  File \"/tests/test_jwt.py\", line 57, in test_rejects_token_signed_with_wrong_secret\n    expect_error(client.get(\"/me\", token=forged), 401, \"unauthorized\", \"wrong secret\")\n  File \"/tests/shelf.py\", line 107, in expect_error\n    expect_status(res, status, context)\n  File \"/tests/shelf.py\", line 85, in expect_status\n    assert res.status == status, (\n           ^^^^^^^^^^^^^^^^^^^^\nAssertionError: wrong secret: expected HTTP 401, got 500: {\"code\":\"internal_error\",\"error\":\"JWTKit error: signature verification failed\"}\n"
+      },
+      {
+        "id": "test_loans.TestLoans.test_borrow_happy_path",
+        "outcome": "failed",
+        "message": "Traceback (most recent call last):\n  File \"/tests/test_loans.py\", line 35, in test_borrow_happy_path\n    expect_keys(\n  File \"/tests/shelf.py\", line 124, in expect_keys\n    assert not missing, f\"{ctx}missing keys {missing} (have {sorted(obj)})\"\n           ^^^^^^^^^^^\nAssertionError: loan: missing keys ['returnedOn'] (have ['book', 'bookId', 'borrowedOn', 'dueOn', 'fineCents', 'id', 'user', 'userId'])\n"
+      },
+      {
+        "id": "test_users_stats.TestUsersAndStats.test_stats_permissions_and_shape",
+        "outcome": "failed",
+        "message": "Traceback (most recent call last):\n  File \"/tests/test_users_stats.py\", line 46, in test_stats_permissions_and_shape\n    expect_error(member.get(\"/stats\"), 403, \"forbidden\", \"member stats\")\n  File \"/tests/shelf.py\", line 107, in expect_error\n    expect_status(res, status, context)\n  File \"/tests/shelf.py\", line 85, in expect_status\n    assert res.status == status, (\n           ^^^^^^^^^^^^^^^^^^^^\nAssertionError: member stats: expected HTTP 403, got 500: {\"error\":\"RouteNotFound.404: Not Found\",\"code\":\"internal_error\"}\n"
+      },
+      {
+        "id": "test_users_stats.TestUsersAndStats.test_stats_deltas_track_activity",
+        "outcome": "error",
+        "message": "Traceback (most recent call last):\n  File \"/tests/test_users_stats.py\", line 66, in test_stats_deltas_track_activity\n    self.assertEqual(mid[\"users\"], before[\"users\"] + 1)\n                     ~~~^^^^^^^^^\nKeyError: 'users'\n"
+      }
+    ]
+  },
+  "phase_b": {
+    "phase": "B",
+    "base_url": "http://127.0.0.1:18081",
+    "total": 5,
+    "passed": 2,
+    "failed": 2,
+    "errors": 1,
+    "skipped": 0,
+    "duration_s": 0.518,
+    "cases": [
+      {
+        "id": "test_persistence.TestPersistenceRestart.test_old_token_rejected_after_secret_change",
+        "outcome": "failed",
+        "message": "Traceback (most recent call last):\n  File \"/tests/test_persistence.py\", line 176, in test_old_token_rejected_after_secret_change\n    expect_error(\n  File \"/tests/shelf.py\", line 107, in expect_error\n    expect_status(res, status, context)\n  File \"/tests/shelf.py\", line 85, in expect_status\n    assert res.status == status, (\n           ^^^^^^^^^^^^^^^^^^^^\nAssertionError: token signed with the previous secret: expected HTTP 401, got 500: {\"code\":\"internal_error\",\"error\":\"JWTKit error: signature verification failed\"}\n"
+      },
+      {
+        "id": "test_persistence.TestPersistenceRestart.test_stats_include_persisted_fines",
+        "outcome": "failed",
+        "message": "Traceback (most recent call last):\n  File \"/tests/test_persistence.py\", line 188, in test_stats_include_persisted_fines\n    expect_status(res, 200, \"stats after restart\")\n  File \"/tests/shelf.py\", line 85, in expect_status\n    assert res.status == status, (\n           ^^^^^^^^^^^^^^^^^^^^\nAssertionError: stats after restart: expected HTTP 200, got 500: {\"code\":\"internal_error\",\"error\":\"RouteNotFound.404: Not Found\"}\n"
+      },
+      {
+        "id": "test_persistence.TestPersistenceRestart.test_loans_and_fines_persist",
+        "outcome": "error",
+        "message": "Traceback (most recent call last):\n  File \"/tests/test_persistence.py\", line 171, in test_loans_and_fines_persist\n    self.assertIsNone(opened[\"returnedOn\"])\n                      ~~~~~~^^^^^^^^^^^^^^\nKeyError: 'returnedOn'\n"
+      }
+    ]
+  },
+  "total": 50,
+  "passed": 38,
+  "failed": 10,
+  "errors": 2,
+  "pass_rate": 0.7600
+}

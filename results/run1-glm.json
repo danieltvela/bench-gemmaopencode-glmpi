@@ -1,0 +1,55 @@
+{
+  "run_id": "run1",
+  "arm": "glm",
+  "date": "2026-10-02T16:59:45Z",
+  "status": "fail",
+  "swift_image": "swift:6.1-jammy",
+  "python_image": "python:3.12-slim",
+  "suite_sha256": "02d225c018ac271a09914b42811d6ff602ff58793415e7637478a6b2e1e36fb6",
+  "executable": "App",
+  "build_ok": true,
+  "phase_a": {
+    "phase": "A",
+    "base_url": "http://127.0.0.1:18080",
+    "total": 45,
+    "passed": 43,
+    "failed": 2,
+    "errors": 0,
+    "skipped": 0,
+    "duration_s": 11.147,
+    "cases": [
+      {
+        "id": "test_books.TestBooks.test_create_book_validation",
+        "outcome": "failed",
+        "message": "Traceback (most recent call last):\n  File \"/tests/test_books.py\", line 181, in test_create_book_validation\n    expect_error(\n  File \"/tests/shelf.py\", line 107, in expect_error\n    expect_status(res, status, context)\n  File \"/tests/shelf.py\", line 85, in expect_status\n    assert res.status == status, (\n           ^^^^^^^^^^^^^^^^^^^^\nAssertionError: missing title: expected HTTP 400, got 401: {\"error\":\"Unauthorized\",\"code\":\"unauthorized\"}\n"
+      },
+      {
+        "id": "test_loans.TestLoans.test_borrow_happy_path",
+        "outcome": "failed",
+        "message": "Traceback (most recent call last):\n  File \"/tests/test_loans.py\", line 35, in test_borrow_happy_path\n    expect_keys(\n  File \"/tests/shelf.py\", line 124, in expect_keys\n    assert not missing, f\"{ctx}missing keys {missing} (have {sorted(obj)})\"\n           ^^^^^^^^^^^\nAssertionError: loan: missing keys ['returnedOn'] (have ['book', 'bookId', 'borrowedOn', 'dueOn', 'fineCents', 'id', 'user', 'userId'])\n"
+      }
+    ]
+  },
+  "phase_b": {
+    "phase": "B",
+    "base_url": "http://127.0.0.1:18081",
+    "total": 5,
+    "passed": 4,
+    "failed": 0,
+    "errors": 1,
+    "skipped": 0,
+    "duration_s": 0.666,
+    "cases": [
+      {
+        "id": "test_persistence.TestPersistenceRestart.test_loans_and_fines_persist",
+        "outcome": "error",
+        "message": "Traceback (most recent call last):\n  File \"/tests/test_persistence.py\", line 171, in test_loans_and_fines_persist\n    self.assertIsNone(opened[\"returnedOn\"])\n                      ~~~~~~^^^^^^^^^^^^^^\nKeyError: 'returnedOn'\n"
+      }
+    ]
+  },
+  "total": 50,
+  "passed": 47,
+  "failed": 2,
+  "errors": 1,
+  "pass_rate": 0.9400
+}

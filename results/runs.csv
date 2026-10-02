@@ -1,0 +1,4 @@
+date,run_id,arm,status,build,exe,phase_a_passed,phase_a_total,phase_b_passed,phase_b_total,passed,total,pass_rate,suite_sha256
+2026-10-02T13:58:29Z,ref-calibration,reference,pass,true,App,45,45,5,5,50,50,1.0000,02d225c018ac271a09914b42811d6ff602ff58793415e7637478a6b2e1e36fb6
+2026-10-02T16:59:45Z,run1,glm,fail,true,App,43,45,4,5,47,50,0.9400,02d225c018ac271a09914b42811d6ff602ff58793415e7637478a6b2e1e36fb6
+2026-10-02T17:01:08Z,run1,gemma,fail,true,App,36,45,2,5,38,50,0.7600,02d225c018ac271a09914b42811d6ff602ff58793415e7637478a6b2e1e36fb6
